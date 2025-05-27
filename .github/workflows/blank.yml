@@ -24,6 +24,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: actions/setup-go@v5
       - run: go install github.com/openpubkey/opkssh@main
 
       - run: opkssh login github
