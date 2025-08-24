@@ -24,11 +24,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/setup-go@v5
-      - run: go install github.com/openpubkey/opkssh@main
+      - name: Setup opkssh
+        uses: openpubkey/setup-opkssh@v1
+        with:
+          ssh-hosts-to-scan: 'shea.shyim.de'
 
-      - run: opkssh login github
-
-      - run: ssh-keyscan shea.shyim.de >> ~/.ssh/known_hosts
-
-      - run: ssh github@shea.shyim.de whoami
+      - run: ssh shyim@shea.shyim.de whoami
